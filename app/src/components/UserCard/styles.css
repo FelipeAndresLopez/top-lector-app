@@ -1,0 +1,23 @@
+.user-card {
+  display: flex;
+  list-style: none;
+  margin: 10px 0px;
+  padding: 10px;
+  align-items: center;
+  background-color: var(--neutral-light-color);
+}
+
+
+.user-card div {
+  flex-grow: 1;
+  padding: 10px;
+  text-align: left;
+}
+
+.user-card div p {
+  color: var(--neutral-dark-color)
+}
+
+.user-card div p strong {
+  color: var(--primary-color)
+}

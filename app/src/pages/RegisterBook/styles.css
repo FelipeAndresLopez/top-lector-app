@@ -1,0 +1,22 @@
+.register-book .rate {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+
+}
+
+@media screen and (max-width: 768px) {
+  .register-book .rate {
+    width: 100%;
+  }
+}
+
+input[type=range] {
+  accent-color: var(--primary-color);
+}
+
+
+.emoji-rate {
+  font-size: 80px;
+  text-align: center;
+}

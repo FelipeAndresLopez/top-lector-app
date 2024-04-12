@@ -1,0 +1,25 @@
+.user-profile {
+  padding: 20px 0;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.my-profile__header {
+  display: flex;
+  justify-content: end;
+}
+
+.user-profile .user-profile__name {
+  text-align: left;
+}
+
+
+.my-profile .my-profile__title {
+  text-align: center;
+}
+
+.user-profile button {
+  align-self: flex-end;
+}
