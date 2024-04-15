@@ -34,10 +34,6 @@ app.use(express.json())
 
 app.use(express.static('../app/dist'))
 
-app.get('/', (req, res) => {
-  res.send('Bienvenido a la API de Top Lector')
-})
-
 app.use('/api/users', createUserRouter({ userModel: User }))
 app.use('/api/books', createBookRouter({ bookModel: Book }))
 app.use('/api/login', createLoginRouter({ userModel: User }))
