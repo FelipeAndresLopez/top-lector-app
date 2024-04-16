@@ -9,6 +9,7 @@ import { MyProfile } from '../pages/MyProfile/MyProfile.tsx'
 import { PrivateRoute } from '../components/PrivateRoute/PrivateRoute.tsx'
 import { RegisterBook } from '../pages/RegisterBook/RegisterBook.tsx'
 import { MENU_PATHS } from '../const.ts'
+import { EditProfile } from '../pages/EditProfile/EditProfile.tsx'
 
 export const router = createHashRouter([
   {
@@ -37,12 +38,16 @@ export const router = createHashRouter([
   },
 
   {
-    path: '/mi-perfil',
+    path: MENU_PATHS.MY_PROFILE,
     element: <PrivateRoute component={MyProfile} />
   },
 
   {
-    path: '/registrar-libro',
+    path: MENU_PATHS.REGISTER_BOOK,
     element: <PrivateRoute component={RegisterBook} />
+  },
+  {
+    path: MENU_PATHS.EDIT_PROFILE,
+    element: <PrivateRoute component={EditProfile} />
   }
 ])

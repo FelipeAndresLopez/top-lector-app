@@ -1,14 +1,12 @@
 import { type FormEvent, useState, type ChangeEvent } from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import { Container } from '../../components/Container/Container'
 import { RATING } from '../../const'
 import './styles.css'
 import { type Notification, type Book } from '../../type'
 import { bookService } from '../../services/books'
+import { BackButton } from '../../components/BackButton/BackButton'
 
 export const RegisterBook: React.FC = () => {
-  const navigate = useNavigate()
   const [star, setStar] = useState(RATING.WORST)
   const [notification, setNotification] = useState<Notification | null>(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -101,13 +99,7 @@ export const RegisterBook: React.FC = () => {
             {isLoading && <p>Cargando...</p>}
             <br />
             <button className='button btn-primary' type="submit">Registrar</button>
-            <button
-              className='button btn-secondary'
-              onClick={() => { navigate(-1) }}
-              type="submit"
-            >
-              Volver
-            </button>
+            <BackButton />
           </form>
         </div>
       </Container>

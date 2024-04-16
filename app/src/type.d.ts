@@ -8,6 +8,13 @@ export interface User {
   error?: string
 }
 
+export interface UserOptional {
+  name?: User.name
+  email?: User.email
+  photo?: User.photo
+  error?: string
+}
+
 export interface UserCredentials {
   email: User.Email
   password: User.Password

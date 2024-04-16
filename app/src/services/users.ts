@@ -1,5 +1,5 @@
 import { BASE_URL } from '../const'
-import { type UserId, type User } from '../type'
+import { type UserId, type User, UserOptional } from '../type'
 
 const USERS_ENDPOINT = 'users'
 
@@ -50,4 +50,25 @@ const getUserById: GetUserById = async ({ userId }) => {
   }
 }
 
-export const userService = { getUsers, createUser, getUserById }
+type UpdateUser = (user: UserOptional) => Promise<UserOptional>
+const updateUser: UpdateUser = async ({ name, email, photo }) => {
+  try {
+    const response = await window.fetch(`${BASE_URL}/${USERS_ENDPOINT}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        photo
+      })
+    })
+    const data = await response.json()
+    return data
+  } catch (error) {
+    throw new Error('Error updating user')
+  }
+}
+
+export const userService = { getUsers, createUser, getUserById, updateUser }

@@ -32,7 +32,9 @@ app.use(cors())
 // body parser middleware
 app.use(express.json())
 
-app.use(express.static('../app/dist'))
+if (process.env.NODE_ENV !== 'development') {
+  app.use(express.static('../app/dist'))
+}
 
 app.use('/api/users', createUserRouter({ userModel: User }))
 app.use('/api/books', createBookRouter({ bookModel: Book }))

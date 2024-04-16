@@ -47,12 +47,20 @@ export const MyProfile: React.FC = () => {
   return (
     <Container className='my-profile'>
       <div className='my-profile__header'>
+        <Link
+          to={MENU_PATHS.EDIT_PROFILE}
+          className='link-button'
+          state={userInfo}
+        >
+          Editar perfil
+        </Link>
         <button className='link-button' type='button' onClick={handleLogout}>Cerrar sesión</button>
       </div>
       <div className='user-profile'>
         <UserAvatar photo={userInfo.photo} name={userInfo.name} />
         <div className='user-profile__info'>
           <h1 className='user-profile__name'>{userInfo.name}</h1>
+          <p className='user-profile__email'>{userInfo.email}</p>
         </div>
       </div>
       <h1 className='my-profile__title'>Mis Libros</h1>

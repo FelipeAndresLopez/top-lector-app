@@ -2,6 +2,7 @@ export const MENU_PATHS = {
   HOME: '/',
   LOGIN: '/iniciar-sesion',
   REGISTER_USER: '/registrar-usuario',
+  EDIT_PROFILE: '/editar-perfil',
   MY_PROFILE: '/mi-perfil',
   REGISTER_BOOK: '/registrar-libro'
 }
