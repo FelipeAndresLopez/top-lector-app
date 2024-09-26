@@ -22,11 +22,11 @@ export const BookList: React.FC<BookListProps> = ({
           key={book.id}
           book={book}>
           {hasDeleteButton && <button
-            className='icon-button trash-icon'
+            className='icon-button'
             type='button'
             onClick={async () => { await onDeleteBook(book.id) }}
           >
-            <TrashCanIcon className='my-profile__trash-icon' />
+            <TrashCanIcon />
           </button>}
         </BookCard>
       )}

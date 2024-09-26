@@ -39,7 +39,3 @@ li.book-card {
 .book-card small {
   color: var(--primary-color)
 }
-
-.trash-icon {
-  fill: var(--secondary-color);
-}

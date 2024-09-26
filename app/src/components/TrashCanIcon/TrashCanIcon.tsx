@@ -1,3 +1,5 @@
+import './styles.css'
+
 interface Props {
   className?: string
 }
@@ -5,7 +7,7 @@ interface Props {
 export const TrashCanIcon: React.FC<Props> = ({ className = '' }) => {
   return (
     <svg
-      className={className}
+      className={`trash-icon ${className}`}
       xmlns="http://www.w3.org/2000/svg"
       width="25"
       height="25"
