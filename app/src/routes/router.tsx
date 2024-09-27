@@ -10,6 +10,7 @@ import { PrivateRoute } from '../components/PrivateRoute/PrivateRoute.tsx'
 import { RegisterBook } from '../pages/RegisterBook/RegisterBook.tsx'
 import { MENU_PATHS } from '../const.ts'
 import { EditProfile } from '../pages/EditProfile/EditProfile.tsx'
+import { UserInfoProvider } from '../context/userInfo.tsx'
 
 export const router = createHashRouter([
   {
@@ -39,7 +40,8 @@ export const router = createHashRouter([
 
   {
     path: MENU_PATHS.MY_PROFILE,
-    element: <PrivateRoute component={MyProfile} />
+    element: <UserInfoProvider> <PrivateRoute component={MyProfile} />
+    </UserInfoProvider>
   },
 
   {

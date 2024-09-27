@@ -5,8 +5,8 @@ import { IconButton } from '../IconButton/IconButton'
 import { TrashCanIcon } from '../TrashCanIcon/TrashCanIcon'
 import { EditIcon } from '../EditIcon/EditIcon'
 import { bookService } from '../../services/books'
-import { getUserSessionInfo } from '../../utils'
-import { useGetUserInfo } from '../../hooks/useTopReaders'
+import { useContext } from 'react'
+import { UserInfoContext } from '../../context/userInfo'
 
 interface Props {
   book: Book
@@ -21,8 +21,7 @@ export const BookCard: React.FC<Props> = ({
 }) => {
 
 
-  const { id: userId } = getUserSessionInfo()
-  const { userInfo, setUserInfo } = useGetUserInfo({ userId: userId })
+  const { userInfo, setUserInfo } = useContext(UserInfoContext)
 
   const handleDeleteBook = async (bookId: BookId): Promise<void> => {
     try {

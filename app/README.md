@@ -12,3 +12,5 @@
 
 * [] Create action button to edit a book and load data in the form
 * [] Create form to reset password
+* [] Refactor routes strategy use components instead of an object
+* [] Add a confirmation dialog for deleting books

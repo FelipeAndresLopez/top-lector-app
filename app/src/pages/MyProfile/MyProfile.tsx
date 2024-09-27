@@ -1,9 +1,6 @@
 // external
 import { Link, useNavigate } from 'react-router-dom'
 
-// hooks
-import { useGetUserInfo } from '../../hooks/useTopReaders'
-
 // services
 import { bookService } from '../../services/books'
 
@@ -18,10 +15,15 @@ import { getUserSessionInfo } from '../../utils'
 
 // styles
 import './styles.css'
+import { useContext, useEffect } from 'react'
+import { UserInfoContext } from '../../context/userInfo'
+import { userService } from '../../services/users'
+import { User } from '../../type'
 
 export const MyProfile: React.FC = () => {
-  const { id } = getUserSessionInfo()
-  const { userInfo } = useGetUserInfo({ userId: id })
+  const { id: userId = '' } = getUserSessionInfo()
+  const { userInfo, setUserInfo } = useContext(UserInfoContext)
+
   const navigate = useNavigate()
 
   const handleLogout = (): void => {
@@ -29,6 +31,16 @@ export const MyProfile: React.FC = () => {
     bookService.setSessionToken('')
     navigate(MENU_PATHS.HOME)
   }
+
+  useEffect(() => {
+    userService.getUserById({ userId })
+      .then((data: User) => {
+        setUserInfo(data)
+      })
+      .catch(error => {
+        throw new Error(`Error getting user info ${error}`)
+      })
+  }, [])
 
   return (
     <Container className='my-profile'>
