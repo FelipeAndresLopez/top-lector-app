@@ -1,0 +1,13 @@
+.icon-button {
+  padding: 0;
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: medium;
+
+  &:hover {
+    border: 1px solid var(--primary-light-color);
+    border-radius: 5px;
+  }
+}

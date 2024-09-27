@@ -4,3 +4,10 @@
   list-style: none;
   padding: 0;
 }
+
+.book-card__actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}

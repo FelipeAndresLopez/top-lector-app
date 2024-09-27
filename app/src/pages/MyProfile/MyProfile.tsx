@@ -14,7 +14,6 @@ import { UserAvatar } from '../../components/UserAvatar/UserAvatar'
 
 // constants and types and utils
 import { MENU_PATHS } from '../../const'
-import { type BookId } from '../../type'
 import { getUserSessionInfo } from '../../utils'
 
 // styles
@@ -22,26 +21,13 @@ import './styles.css'
 
 export const MyProfile: React.FC = () => {
   const { id } = getUserSessionInfo()
-  const { userInfo, setUserInfo } = useGetUserInfo({ userId: id })
+  const { userInfo } = useGetUserInfo({ userId: id })
   const navigate = useNavigate()
 
   const handleLogout = (): void => {
     localStorage.removeItem('loggedUserTopLectorApp')
     bookService.setSessionToken('')
     navigate(MENU_PATHS.HOME)
-  }
-
-  const handleDeleteBook = async (bookId: BookId): Promise<void> => {
-    try {
-      const response = await bookService.deleteBook({ bookId })
-      userInfo.books = userInfo.books.filter(book => book.id !== bookId)
-      setUserInfo({ ...userInfo })
-      if (response.error !== undefined) {
-        console.log(response.error)
-      }
-    } catch (error) {
-      console.log(error)
-    }
   }
 
   return (
@@ -66,8 +52,7 @@ export const MyProfile: React.FC = () => {
       <h1 className='my-profile__title'>Mis Libros</h1>
       <BookList
         books={userInfo.books}
-        onDeleteBook={handleDeleteBook}
-        hasDeleteButton
+        hasActions
       />
       <Link className='float-button' to={MENU_PATHS.REGISTER_BOOK}>
         +

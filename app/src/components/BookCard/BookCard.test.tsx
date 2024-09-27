@@ -25,7 +25,6 @@ test('clicking delete button calls delete function', async () => {
   const onDeleteBook = vi.fn()
   const component = render(
     <BookCard book={book} >
-      <button className='icon-button trash-icon' onClick={onDeleteBook} type='button' />
     </BookCard>
   )
   fireEvent.click(component.getByRole('button'))

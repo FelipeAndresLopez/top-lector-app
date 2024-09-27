@@ -17,7 +17,7 @@ describe('BookList', () => {
             userComment: 'Me encanta este libro'
           }
         ]}
-        hasDeleteButton
+        hasActions
 
       />
     )
