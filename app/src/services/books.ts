@@ -58,4 +58,27 @@ const deleteBook: DeleteBook = async ({ bookId }) => {
   }
 }
 
-export const bookService = { registerBook, deleteBook, setSessionToken }
+type UpdateBook = (book: Book) => Promise<Book>
+const updateBook: UpdateBook = async ({ id, title, author, rating, userComment }) => {
+  token = getSessionToken()
+  try {
+    const response = await window.fetch(`${BASE_URL}/${BOOKS_ENDPOINT}/${String(id)}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        title,
+        author,
+        rating,
+        userComment
+      })
+    })
+    return await response.json()
+  } catch (error) {
+    throw new Error('Error updating book')
+  }
+}
+
+export const bookService = { registerBook, deleteBook, setSessionToken, updateBook }

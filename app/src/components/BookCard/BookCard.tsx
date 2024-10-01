@@ -7,6 +7,8 @@ import { EditIcon } from '../EditIcon/EditIcon'
 import { bookService } from '../../services/books'
 import { useContext } from 'react'
 import { UserInfoContext } from '../../context/userInfo'
+import { useNavigate } from 'react-router-dom'
+import { MENU_PATHS } from '../../const'
 
 interface Props {
   book: Book
@@ -22,6 +24,7 @@ export const BookCard: React.FC<Props> = ({
 
 
   const { userInfo, setUserInfo } = useContext(UserInfoContext)
+  const navigate = useNavigate()
 
   const handleDeleteBook = async (bookId: BookId): Promise<void> => {
     try {
@@ -34,6 +37,10 @@ export const BookCard: React.FC<Props> = ({
     } catch (error) {
       console.log(error)
     }
+  }
+
+  const handleEditBook = async (book: Book): Promise<void> => {
+    navigate(MENU_PATHS.REGISTER_BOOK, { state: book })
   }
 
   return (
@@ -53,7 +60,15 @@ export const BookCard: React.FC<Props> = ({
               <TrashCanIcon />
             </IconButton>
 
-            <IconButton handleClick={() => { handleDeleteBook(id) }}>
+            <IconButton handleClick={() => {
+              handleEditBook({
+                id,
+                title,
+                author,
+                rating,
+                userComment
+              })
+            }}>
               <EditIcon />
             </IconButton>
           </div>
