@@ -28,12 +28,15 @@ export const BookCard: React.FC<Props> = ({
 
   const handleDeleteBook = async (bookId: BookId): Promise<void> => {
     try {
-      const response = await bookService.deleteBook({ bookId })
-      userInfo.books = userInfo.books.filter(book => book.id !== bookId)
-      setUserInfo({ ...userInfo })
-      if (response.error !== undefined) {
-        console.log(response.error)
+      if (window.confirm('¿Seguro que quieres borrar este libro?')) {
+        const response = await bookService.deleteBook({ bookId })
+        userInfo.books = userInfo.books.filter(book => book.id !== bookId)
+        setUserInfo({ ...userInfo })
+        if (response.error !== undefined) {
+          console.log(response.error)
+        }
       }
+
     } catch (error) {
       console.log(error)
     }
@@ -56,9 +59,6 @@ export const BookCard: React.FC<Props> = ({
         {hasActions && (
 
           <div className='book-card__actions'>
-            <IconButton handleClick={() => { handleDeleteBook(id) }}>
-              <TrashCanIcon />
-            </IconButton>
 
             <IconButton handleClick={() => {
               handleEditBook({
@@ -70,6 +70,9 @@ export const BookCard: React.FC<Props> = ({
               })
             }}>
               <EditIcon />
+            </IconButton>
+            <IconButton handleClick={() => { handleDeleteBook(id) }}>
+              <TrashCanIcon />
             </IconButton>
           </div>
         )}

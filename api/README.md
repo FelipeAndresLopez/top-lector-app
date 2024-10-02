@@ -10,5 +10,5 @@
 
   # Tasks API - Phase II
 
-* [] Create an endpoint to update a book
+* [x] Create an endpoint to update a book
 * [] Create an endpoint to reset password

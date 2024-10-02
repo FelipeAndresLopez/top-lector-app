@@ -10,7 +10,7 @@
 
 # Tasks App - Phase II
 
-* [] Create action button to edit a book and load data in the form
-* [] Create form to reset password
+* [x] Create action button to edit a book and load data in the form
+* [x] Add a confirmation dialog for deleting books
 * [] Refactor routes strategy use components instead of an object
-* [] Add a confirmation dialog for deleting books
+* [] Create form to reset password

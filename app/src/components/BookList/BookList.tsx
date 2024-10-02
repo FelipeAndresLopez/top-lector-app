@@ -11,7 +11,12 @@ interface BookListProps {
 export const BookList: React.FC<BookListProps> = ({
   books,
   hasActions = false
-}) => {
+}): JSX.Element => {
+
+  if (books.length === 0) {
+    return <h2>¿No has leído ningún libro este año 😱? </h2>
+  }
+
   return (
     <ul className='book-list'>
       {books.map(book =>
